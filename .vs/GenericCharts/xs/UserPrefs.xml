@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{FA6CDD02-5328-479B-BDE8-B6D4DC80F979}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GenericCharts/Properties/launchSettings.json">
+    <Files>
+      <File FileName="GenericCharts/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="GenericCharts/Properties/launchSettings.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GenericCharts" expanded="True">
+            <Node name="GenericCharts" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GenericCharts PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Application</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Interactive Chart Application</h1>
+        <form id="chartForm">
+            <div class="mb-3">
+                <label for="databaseType" class="form-label">Database Type</label>
+                <select class="form-select" id="databaseType">
+                    <option value="0">SqlServer</option>
+                    <option value="1">MySql</option>
+                    <option value="2">PGAdmin</option>
+                </select>
+            </div>
+            
+            <!-- Connection String Fields -->
+            <div id="sqlFields">
+                <div class="mb-3">
+                    <label for="serverName" class="form-label">Server Name</label>
+                    <input type="text" class="form-control" id="serverName" placeholder="Enter server name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="databaseName" class="form-label">Database Name</label>
+                    <input type="text" class="form-control" id="databaseName" placeholder="Enter database name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <!-- PGAdmin-specific Port -->
+            <div id="pgAdminPortField" class="mb-3" style="display:none;">
+                <label for="pgAdminPort" class="form-label">PGAdmin Port</label>
+                <input type="text" class="form-control" id="pgAdminPort" value="5432">
+            </div>
+
+            <!-- Get Tables Button -->
+            <button type="button" class="btn btn-primary" id="getTablesBtn" disabled>Get Tables</button>
+
+            <!-- Table Name -->
+            <div class="mb-3">
+                <label for="tableName" class="form-label">Table Name</label>
+                <select class="form-select" id="tableName">
+                    <option value="">Select a table</option>
+                </select>
+            </div>
+
+            <!-- Chart Type -->
+            <div class="mb-3">
+                <label for="chartType" class="form-label">Chart Type</label>
+                <select class="form-select" id="chartType">
+                    <option value="0">Line Chart</option>
+                    <option value="1">Bar Chart</option>
+                    <option value="2">Radar Chart</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary" id="generateChartBtn">Generate Chart</button>
+                <button type="button" class="btn btn-danger" id="clearChartBtn">Clear Chart</button>
+            </div>
+        </form>
+
+        <!-- Generated Chart -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+
+        <a  href="http://www.chartjs.org" class="link">chart examples and Chart.js library</a>
+    </div>
+
+    <!-- Toast Mesajı -->
+    <div id="toastContainer" aria-live="polite" aria-atomic="true" class="position-fixed bottom-0 end-0 p-3">
+        <div id="toastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Notification</strong>
+                <small>Just now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                This is a toast message.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
