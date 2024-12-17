@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/354d1331-b9d8-4a32-9205-91c8a1f0470e)# Interactive Chart Application
+# Interactive Chart Application
 
 This project is a web application that allows users to create interactive charts using data from a database. It supports different types of databases (SQL Server, MySQL, and PGAdmin) and enables users to select tables and chart types for data visualization. The application uses popular libraries such as Bootstrap, Chart.js, and jQuery to provide a user-friendly interface.
 
@@ -20,7 +20,7 @@ This project is a web application that allows users to create interactive charts
   **Clone the Repository:** add start to use.
    ```bash
    git clone https://github.com/your-username/interactive-chart-application.git
-
+   ```
 
 ## Screenshots
 
