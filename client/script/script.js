@@ -1,38 +1,30 @@
 $(document).ready(function () {
-    // Veritabanı tipi değiştiğinde formu güncelle
     $('#databaseType').on('change', function () {
         const databaseType = $(this).val();
 
-        // Input alanlarını sıfırlayalım
         $('#serverName').val('');
         $('#databaseName').val('');
         $('#username').val('');
         $('#password').val('');
         $('#pgAdminPort').val('5432');
         $('#tableName').empty().append('<option value="">Select a table</option>');
-
-        // Bütün özel alanları gizleyelim
         $('#pgAdminPortField').hide();
         $('#sqlFields').show();
         $('#getTablesBtn').prop('disabled', true);
 
-        // İlgili veritabanı tipine göre alanları göster
-        if (databaseType === '0' || databaseType === '1') { // SQL Server ve MySQL
+        if (databaseType === '0' || databaseType === '1') { 
             $('#pgAdminPortField').hide();
-        } else if (databaseType === '2') { // PGAdmin
+        } else if (databaseType === '2') { 
             $('#pgAdminPortField').show();
         }
 
-        // Butonun aktif olup olmadığını kontrol et
         checkSubmitButton();
     });
 
-    // Kullanıcı veritabanı bilgilerini girdikçe butonu aktif et
     $('#chartForm input, #chartForm select').on('change', function () {
         checkSubmitButton();
     });
 
-    // Butonun aktif olup olmadığını kontrol et
     function checkSubmitButton() {
         const serverName = $('#serverName').val();
         const databaseName = $('#databaseName').val();
@@ -42,7 +34,6 @@ $(document).ready(function () {
         const pgAdminPort = $('#pgAdminPort').val();
         const tableName = $('#tableName').val();
 
-        // Eğer tableName boşsa, submit butonunu devre dışı bırak
         if (serverName && databaseName && username && password && (databaseType === '3' ? pgAdminPort : true) && tableName) {
             $('#generateChartBtn').prop('disabled', false);
         } else {
@@ -56,7 +47,6 @@ $(document).ready(function () {
         }
     }
 
-    // Toast mesajını gösteren fonksiyon
     function showToast(message, isError = false) {
         const toastBody = $('#toastMessage .toast-body');
         toastBody.text(message);
@@ -71,7 +61,6 @@ $(document).ready(function () {
         toast.show();
     }
 
-    // Veritabanı tablolarını alma
     $('#getTablesBtn').on('click', function () {
         const chartRequest = {
             ServerName: $('#serverName').val(),
@@ -96,7 +85,7 @@ $(document).ready(function () {
                 });
 
                 showToast('Tables fetched successfully!', false);
-                checkSubmitButton(); // Tablo listesi alındıktan sonra butonları kontrol et
+                checkSubmitButton(); 
             },
             error: function (error) {
                 const errorMessage = error.responseJSON?.message || 'Failed to fetch tables';
@@ -107,7 +96,6 @@ $(document).ready(function () {
 
     let chartInstance = null;
 
-    // Grafik verisi gönderimi
     $('#chartForm').on('submit', function (e) {
         e.preventDefault();
 
@@ -165,14 +153,13 @@ $(document).ready(function () {
         });
     });
 
-    // "Clear Chart" butonunun işlevi
     $('#clearChartBtn').on('click', function () {
         if (chartInstance) {
-            chartInstance.destroy(); // Grafiği sil
+            chartInstance.destroy(); 
         }
-        $('#myChart').remove(); // Grafik alanını temizle
-        $('.card-body').append('<canvas id="myChart" width="400" height="200"></canvas>'); // Yeni bir canvas ekle
+        $('#myChart').remove(); 
+        $('.card-body').append('<canvas id="myChart" width="400" height="200"></canvas>');
         showToast('Chart cleared!', false);
-        $('#generateChartBtn').prop('disabled', false); // "Generate Chart" butonunu tekrar aktif et
+        $('#generateChartBtn').prop('disabled', false);
     });
 });

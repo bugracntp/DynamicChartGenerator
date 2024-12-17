@@ -215,7 +215,7 @@ public Response<List<object>> GetVariableFromMySql(string connectionString, stri
             cnn.Open();
             using (var command = cnn.CreateCommand())
             {
-                command.CommandText = $"SELECT * FROM `{tableName}`"; // MySQL'de tablo isimlerini backtick ile sarmalamak yaygındır
+                command.CommandText = $"SELECT * FROM `{tableName}`"; 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())

@@ -18,8 +18,6 @@ public class ChartBusinessUnit : IChartBusinessUnit
         _chartDataAccess = chartDataAccess;
     }
     
-    
-    // Host=localhost;Port=5432;Database=GenericCharts;Username=bugracantepe;Password=123456
     public Response<List<object>> GetChartData(ChartRequest request)
     {
         switch (request.DatabaseType)
