@@ -79,7 +79,6 @@ $(document).ready(function () {
             success: function (response) {
                 const tableSelect = $('#tableName');
                 tableSelect.empty().append('<option value="">Select a table</option>');
-                console.log(response.data);
                 response.data.forEach(function (table) {
                     tableSelect.append('<option value="' + table + '">' + table + '</option>');
                 });
@@ -116,8 +115,19 @@ $(document).ready(function () {
             contentType: 'application/json',
             data: JSON.stringify(chartRequest),
             success: function (response) {
-                const labels = response.data.map(item => item.Label);
-                const variables = response.data.map(item => item.Data);
+
+                const firstItem = response.data[0];
+                const keys = Object.keys(firstItem).filter(key => key.toLowerCase() !== 'id');
+
+                const dataKey = keys.find(key => typeof firstItem[key] === 'number');
+                const labelKey = keys.find(key => typeof firstItem[key] === 'string');
+                
+                if (!labelKey || !dataKey) {
+                    showToast('Error: Could not determine keys for labels or data', true);
+                    return;
+                }
+                const labels = response.data.map(item => item[labelKey]);
+                const variables = response.data.map(item => item[dataKey]);
                 const ctx = document.getElementById('myChart').getContext('2d');
 
                 if (chartInstance) {
